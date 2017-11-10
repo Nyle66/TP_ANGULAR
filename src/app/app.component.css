@@ -1,0 +1,93 @@
+h2{
+    margin: 5px;
+    text-decoration: underline;
+}
+h3{
+    margin: 5px;
+    text-decoration: underline;
+}
+#global{
+    display: flex;
+    flex-wrap: wrap;
+    
+    width: 903px;
+    height: 703px;
+
+    border: 2px solid black;
+    margin: 30px;
+
+    background-color: #B8B9B4;
+}
+#random{
+    width: 903px;
+    height: 200px;
+    
+    border: 2px solid black;
+    margin: 30px;
+
+    background-color: #B8B9B4;
+}
+.container{
+    font-family: arial;
+
+    display: block;
+    flex-wrap: wrap;
+
+    width: 445px;
+    height: 695px;
+
+    border: 1px solid black;
+    margin: 2px;
+}
+#monster{
+    background-color: #C0CD6E;
+}
+#info{
+    background-color: #C0CD6E;
+}
+.bloc{
+    border: 1px solid black;
+    margin: 4px;
+
+    background-color: #DEB671;
+}
+#compteur{
+    width: 435px;
+    height: 240px;
+}
+#buy{
+    width: 435px;
+    height: 440px;
+}
+.somme{
+    width: 410px;
+    height: 100px;
+
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 10px;
+
+    background-color: #8DF2A8;
+}
+.center {
+    text-align: center
+}
+.item {
+    cursor: pointer;
+    margin: 0px 10px 0px 10px;
+    padding: 5px 0px 5px 0px;
+    border: 2px solid grey;
+    border-radius: 15px;
+}
+#error{
+    text-align: center;
+    font-size: 2em;
+    color: red;
+    padding-top: 30px;
+}
+.info{
+    font-style: italic;
+}
+#title{
+    text-align: center;
+}
