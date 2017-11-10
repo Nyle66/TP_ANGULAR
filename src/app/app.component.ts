@@ -9,7 +9,7 @@ import { Item } from './class/Item';
 })
 export class AppComponent {
 
-  public gold: number = 4000;
+  public gold: number = 0;
   public dammage: number = 0;
   public click: number = 1;
   public text: string = '';
