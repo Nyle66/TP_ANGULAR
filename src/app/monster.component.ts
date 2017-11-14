@@ -35,7 +35,7 @@ export class MonsterComponent implements OnInit{
                 this.autoAttack();
             }
 
-            //this.second -= 1;
+            this.second -= 1;
 
             if(this.second < 15){
                 document.getElementById('timer').style.color = 'orange';
