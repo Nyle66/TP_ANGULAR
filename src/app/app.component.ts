@@ -1,18 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MonsterService } from './service/monster.service';
 import { Item } from './class/Item';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  ngOnInit(): void {
+    
+    setInterval(() => {
+      
+      if(this.displayscore == true){
+        this.final += 0;
+      }
+      else{
+        this.final += 1;
+      }
+    }, 1000);
+  }
 
   public gold: number = 0;
   public dammage: number = 0;
   public click: number = 1;
   public text: string = '';
+  public myPseudo: string = '';
+
+  public final: number = 0;
+  public users = [];
+  public tab = JSON.parse(localStorage.getItem('Users')) ;
 
   public validGold: boolean = false;
   public validDammage: boolean = false;
@@ -28,6 +46,11 @@ export class AppComponent {
   public item5: Item;
   public item6: Item;
 
+  public displayscore: boolean = false;
+  
+  constructor(){
+
+  }
 
   addGold(){
     if(this.validGold == true && this.validGold2 == false){
@@ -48,11 +71,11 @@ export class AppComponent {
     }
     if(this.validDammage2 == true){
       this.validDammage = false;
-      this.dammage += 6;
+      this.dammage += 5;
       this.click = 10;
     }
     else{
-      this.dammage += 2;
+      this.dammage += 1;
     }
   }
 
@@ -73,12 +96,12 @@ export class AppComponent {
       this.item5 = new Item(5, 'COMPAGNON');
     }
     if(this.gold >= 3000){
-      this.item6 = new Item(6, 'Pierre Foudre');
+      this.item6 = new Item(6, 'PIERRE FOUDRE');
     }
   }
   validG(){
-    if(this.gold >= 60){
-      this.gold -= 60;
+    if(this.gold >= 150){
+      this.gold -= 150;
       this.validGold = true;
       document.getElementById('i2').style.display = "none";
       this.text = "";
@@ -88,8 +111,8 @@ export class AppComponent {
     }
   }
   validD(){
-    if(this.gold >= 30){
-      this.gold -= 30;
+    if(this.gold >= 50){
+      this.gold -= 50;
       this.validDammage = true;
       document.getElementById('i1').style.display = "none";
       this.text = "";
@@ -142,4 +165,28 @@ export class AppComponent {
       this.text = "Pas assez de Gold !";
     }
   }
+
+  save(){
+    if(this.tab == null){
+      this.users.push({
+        Pseudo: this.myPseudo,
+        Time : this.final
+      })
+  
+      localStorage.setItem('Users', JSON.stringify(this.users));
+      this.users.push(this.tab);
+      window.location.reload();
+    }
+    else{
+      this.users = JSON.parse(localStorage.getItem('Users'));
+      this.users.push({
+        Pseudo: this.myPseudo,
+        Time : this.final
+      })
+  
+      localStorage.setItem('Users', JSON.stringify(this.users));
+      this.users.push(this.tab);
+      window.location.reload();
+    }
+  } 
 }

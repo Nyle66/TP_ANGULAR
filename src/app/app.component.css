@@ -6,17 +6,32 @@ h3{
     margin: 5px;
     text-decoration: underline;
 }
-#global{
+.center{
+    text-align: center;
+}
+#page{
+    display: flex;
+    flex-wrap: wrap;
+}
+.global{
     display: flex;
     flex-wrap: wrap;
     
     width: 903px;
-    height: 703px;
+    height: 723px;
 
     border: 2px solid black;
     margin: 30px;
 
     background-color: #B8B9B4;
+}
+#result{
+    width: 300px;
+    height: 723px;
+    border: 2px solid black;
+    margin: 30px;
+
+    background-color: #CBD5D4;
 }
 #random{
     width: 903px;
@@ -34,7 +49,7 @@ h3{
     flex-wrap: wrap;
 
     width: 445px;
-    height: 695px;
+    height: 715px;
 
     border: 1px solid black;
     margin: 2px;
@@ -57,13 +72,13 @@ h3{
 }
 #buy{
     width: 435px;
-    height: 440px;
+    height: 460px;
 }
 .somme{
     width: 410px;
     height: 100px;
 
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 15px;
     margin: 10px;
 
@@ -73,7 +88,7 @@ h3{
     text-align: center
 }
 .item {
-    cursor: pointer;
+    cursor: url("../assets/img/coin.png"), auto;
     margin: 0px 10px 0px 10px;
     padding: 5px 0px 5px 0px;
     border: 2px solid grey;
@@ -90,4 +105,25 @@ h3{
 }
 #title{
     text-align: center;
+}
+#add{
+    text-align: center;
+    margin: 15px;
+    padding: 10px;
+    border: 2px solid orangered;
+}
+#show{
+    margin-top: 10px;
+}
+#shlak{
+    border: 2px solid purple;
+    margin: 15px;
+    padding: 10px;
+}
+#title{
+    margin-bottom: 30px;
+}
+.niark{
+    font-size: 1.2em;
+    color: purple;
 }

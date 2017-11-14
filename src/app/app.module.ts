@@ -6,6 +6,7 @@ import { MonsterComponent } from './monster.component';
 import { DammageComponent } from './dammage.component';
 import { GoldComponent } from './gold.component';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpModule } from '@angular/http';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

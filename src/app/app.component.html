@@ -1,41 +1,52 @@
-<div id="global" (onload)="autoAttack()">
+<div id="page">
+  <div class="global" (onload)="autoAttack()">
 
-  <div id="monster" class="container">
-    <h2>Monsters :</h2>
-    <app-monster (event)="addGold(); addDammage(); itemBuy()" [click]="click" [validP]="validP" [dammage]="dammage" [validE]="validE"></app-monster>
-  </div>
+    <div id="monster" class="container">
+      <h2>Monsters :</h2>
+      <app-monster (event)="addGold(); addDammage(); itemBuy()" (score)="displayscore=true" [click]="click" [validP]="validP" [dammage]="dammage" [validE]="validE"></app-monster>
+    </div>
 
-  <div id="info" class="container">
+    <div id="info" class="container">
 
-    <div id="compteur" class="bloc">
+      <div id="compteur" class="bloc">
 
-      <div class="somme" id="dammage">
-        <h3>Dammage :</h3>
-        <app-dammage [dammage]="dammage"></app-dammage>
+        <div class="somme" id="dammage">
+          <h3>Dammage :</h3>
+          <app-dammage [dammage]="dammage"></app-dammage>
+        </div>
+
+        <div class="somme" id="gold">
+          <h3>Gold :</h3>
+          <app-gold [gold]="gold"></app-gold>
+        </div>
+
       </div>
 
-      <div class="somme" id="gold">
-        <h3>Gold :</h3>
-        <app-gold [gold]="gold"></app-gold>
+      <div id="buy" class="bloc">
+        <h2 id='title'>Buy :</h2>
+        
+            <div *ngIf='item1' class='center item' id="i1" (click)="validD()"> {{item1.name}} / Prix : 50 Gold<br> <span class="info">(Multiplie les dégats par 2)</span> </div><br>
+            <div *ngIf='item2' class='center item' id="i2" (click)="validG()"> {{item2.name}} / Prix : 150 Gold<br> <span class="info">(Multiplie les gold par 2)</span> </div><br>
+            <div *ngIf='item3' class='center item' id="i3" (click)="validD2()"> {{item3.name}} / Prix : 400 Gold<br> <span class="info">(Multiplie les dégats par 2)</span> </div><br>
+            <div *ngIf='item4' class='center item' id="i4" (click)="validG2()"> {{item4.name}} / Prix : 800 Gold<br> <span class="info">(Multiplie les gold par 4)</span> </div><br>
+            <div *ngIf='item5' class='center item' id="i5" (click)="validPoke()"> {{item5.name}} / Prix : 1500 Gold<br> <span class="info">(Clique automatique)</span> </div><br>
+            <div *ngIf='item6' class='center item' id="i6" (click)="validEvo()"> {{item6.name}} / Prix : 3000 Gold<br> <span class="info">(Fait évoluer Pikachu)</span> </div><br>
+
+            <div id="error"> {{ text }} </div>
+        
       </div>
 
     </div>
 
-    <div id="buy" class="bloc">
-      <h2 id='title'>Buy :</h2>
-       
-          <div *ngIf='item1' class='center item' id="i1" (click)="validD()"> {{item1.name}} / Prix : 30 Gold<br> <span class="info">(Multiplie les dégats par 2)</span> </div><br>
-          <div *ngIf='item2' class='center item' id="i2" (click)="validG()"> {{item2.name}} / Prix : 60 Gold<br> <span class="info">(Multiplie les gold par 2)</span> </div><br>
-          <div *ngIf='item3' class='center item' id="i3" (click)="validD2()"> {{item3.name}} / Prix : 400 Gold<br> <span class="info">(Multiplie les dégats par 2)</span> </div><br>
-          <div *ngIf='item4' class='center item' id="i4" (click)="validG2()"> {{item4.name}} / Prix : 800 Gold<br> <span class="info">(Multiplie les gold par 4)</span> </div><br>
-          <div *ngIf='item5' class='center item' id="i5" (click)="validPoke()"> {{item5.name}} / Prix : 1500 Gold<br> <span class="info">(Clique automatique)</span> </div><br>
-          <div *ngIf='item6' class='center item' id="i6" (click)="validEvo()"> {{item6.name}} / Prix : 3000 Gold<br> <span class="info">(Fait évoluer Pikachu)</span> </div><br>
-
-          <div id="error"> {{ text }} </div>
-      
-    </div>
-
   </div>
 
+  <div id="result">
+      <div id="add" *ngIf="displayscore">
+          <h3>Save your result</h3><br>
+          <input type="text" placeholder="Your Pseudo" [(ngModel)]="myPseudo"/><br>
+          <span>Temps: {{final}}s</span><br><br>
+          <button (click)="save()">Enregistrer et Rejouer</button>
+      </div>
+      <div id="shlak"><h2 id="title">Score</h2><div id="show" class="center" *ngFor='let test of tab' ><span class="niark">Pseudo:</span> {{test.Pseudo}} - <span class="niark">Time:</span> {{test.Time}}s</div></div>
+  </div>
 </div>
-
