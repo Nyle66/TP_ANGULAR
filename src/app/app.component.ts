@@ -185,10 +185,8 @@ export class AppComponent implements OnInit{
   
       localStorage.setItem('Users', JSON.stringify(this.users));
       this.users.push(this.tab);
+      window.location.reload();
       
     }
   } 
-  relance(){
-    window.location.reload();
-  }
 }

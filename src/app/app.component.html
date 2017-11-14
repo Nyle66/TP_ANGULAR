@@ -45,8 +45,7 @@
           <h3>Save your result</h3><br>
           <input type="text" placeholder="Your Pseudo" [(ngModel)]="myPseudo"/><br>
           <span>Temps: {{final}}s</span><br><br>
-          <button (click)="save()">Enregistrer</button><br>
-          <button (click)="relance()">Rejouer</button>
+          <button (click)="save()">Enregistrer et Rejouer</button>
       </div>
       <div id="shlak"><h2 id="title">Scores</h2><div id="show" class="center" *ngFor='let test of tab' ><span class="niark">Pseudo:</span> {{test.Pseudo}} - <span class="niark">Time:</span> {{test.Time}}s</div></div>
   </div>
