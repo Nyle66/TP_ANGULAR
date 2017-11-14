@@ -14,11 +14,11 @@ import { Monster } from './class/Monster';
     <div class='center' id='display'><img src="{{pika}}" id="pika" /><h6>{{name}} est dans la place</h6></div></div>
   `,
   styles:[
-    `.papi {width: 200px; height: auto}`,
+    `.papi {width: 150px; height: auto}`,
     `#bete {margin: 20px; font-family: arial}`,
     `.center {text-align: center; font-size: 1.5em}`,
-    `#pika {width: 80px; height: 80px}`,
-    `#display {display: none; margin-top: 50px}`,
+    `#pika {width: 200px; height: 200px}`,
+    `#display {display: none; margin-top: 0px}`,
     `h6 {margin: 0px; font-style: italic}`,
     `#timer {font-size: 1.1em; margin-top: 50px; color: green; background-color: black; border-radius: 10px}`,
     `#cursor {cursor: url('../assets/img/pokeball.png'), auto}`,
@@ -34,8 +34,8 @@ export class MonsterComponent implements OnInit{
             if(this.end == ""){
                 this.autoAttack();
             }
-        
-            this.second -= 1;
+
+            //this.second -= 1;
 
             if(this.second < 15){
                 document.getElementById('timer').style.color = 'orange';
@@ -49,13 +49,13 @@ export class MonsterComponent implements OnInit{
             }
         }, 1000);
     }
-  
+    
     public monsters: Monster[] = [];
     public monster: Monster;
     public id: number = 0;
     public end: string = "";
     public monsterIsLoading = false;
-    public pika: string = 'assets/img/Pikachu.png';
+    public pika: string = 'assets/img/pika.gif';
     public name: string = 'Pikachu';
 
     public second: number = 30;
@@ -132,7 +132,7 @@ export class MonsterComponent implements OnInit{
                 }
             }
             if(this.validE == true){
-                this.pika = 'assets/img/Raichu.png';
+                this.pika = 'assets/img/rai.gif';
                 this.name = 'Raichu';
             }
             if(this.id >= 10 && this.monster.pv <= 0){

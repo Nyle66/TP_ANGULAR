@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
     }, 1000);
   }
 
-  public gold: number = 0;
+  public gold: number = 5000;
   public dammage: number = 0;
   public click: number = 1;
   public text: string = '';

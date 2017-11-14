@@ -111,12 +111,14 @@ h3{
     margin: 15px;
     padding: 10px;
     border: 2px solid orangered;
+    border-radius: 10px;
 }
 #show{
     margin-top: 10px;
 }
 #shlak{
     border: 2px solid purple;
+    border-radius: 10px;
     margin: 15px;
     padding: 10px;
 }
