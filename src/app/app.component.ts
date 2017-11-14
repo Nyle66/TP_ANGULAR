@@ -71,7 +71,7 @@ export class AppComponent implements OnInit{
     }
     if(this.validDammage2 == true){
       this.validDammage = false;
-      this.dammage += 5;
+      this.dammage += 10;
       this.click = 10;
     }
     else{
