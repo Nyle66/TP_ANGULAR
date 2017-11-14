@@ -10,7 +10,7 @@ import { Monster } from './class/Monster';
     <div class='center' id='timer'> Temps restant : {{second}}s</div>
     <h5 class='center'> {{ monster.name }} </h5><br>
     <div class='center' ><img class='papi' id='cursor' src='{{ monster.img }}' (click)='attack()' (click)='parentAddGold()' (load)="imgload()" /></div><br><br>
-    <div id="health" class='center'> {{ monster.pv }}HP </div>
+    <div id="health" class='center'> {{ monster.pv }} HP </div>
     <div class='center' id='display'><img src="{{pika}}" id="pika" /><h6>{{name}} est dans la place</h6></div></div>
   `,
   styles:[
@@ -22,7 +22,7 @@ import { Monster } from './class/Monster';
     `h6 {margin: 0px; font-style: italic}`,
     `#timer {font-size: 1.1em; margin-top: 50px; color: green; background-color: black; border-radius: 10px}`,
     `#cursor {cursor: url('../assets/img/pokeball.png'), auto}`,
-    `#end {font-style: 2em; color: red}`
+    `#end {font-size: 3em; color: red}`
 ],
   providers: [MonsterService]
 })
@@ -35,7 +35,7 @@ export class MonsterComponent implements OnInit{
                 this.autoAttack();
             }
 
-            //this.second -= 1;
+            this.second -= 1;
 
             if(this.second < 15){
                 document.getElementById('timer').style.color = 'orange';
@@ -88,18 +88,8 @@ export class MonsterComponent implements OnInit{
         }
 
         attack(){
-
-            
             if( this.monsterIsLoading ){
                 return;
-            }
-            if(this.monster.pv <= 0){
-                this.monster.pv = 0;
-                this.second = 30;
-                document.getElementById('timer').style.color = 'green';
-                this.id ++;
-                this.monster = this.monsters[this.id];
-                this.monsterIsLoading = true;
             }
             if(this.click == 5){
                 this.monster.pv -= 4;
@@ -110,34 +100,52 @@ export class MonsterComponent implements OnInit{
             else{
                 this.monster.pv -= 1;
             }
-
+            if(this.monster.pv <= 0 ){
+                this.monster.pv = 0;
+                this.second = 30;
+                document.getElementById('timer').style.color = 'green';
+                this.id ++;
+                if(this.id < 11){
+                    this.monster = this.monsters[this.id];
+                    this.monsterIsLoading = true;
+                }
+                if(this.id > 10){
+                    document.getElementById("bete").style.display = "none";
+                }
+            }
             if( this.id == 10 && this.monster.pv <= 0){
-                this.end = "THE END"
+                this.end = "~ THE END ~"
                 this.score.emit( true );
             }
             
         }
 
         autoAttack(){
-            if(this.validP == true){
+            if(this.validP == true && this.id < 11){
                 document.getElementById('display').style.display = 'block';
                 this.monster.pv -= 5;
+                if(this.validE == true){
+                    this.monster.pv -= 5;
+                }
                 if(this.monster.pv <= 0){
                     this.monster.pv = 0;
                     this.id ++;
-                    this.monster = this.monsters[this.id];
-                }
-                if(this.validE == true){
-                    this.monster.pv -= 5;
+                    if( this.id < 11 ){
+                        this.monster = this.monsters[this.id];
+                    }
+                    if(this.id > 10){
+                        document.getElementById("bete").style.display = "none";
+                    }
                 }
             }
             if(this.validE == true){
                 this.pika = 'assets/img/rai.gif';
                 this.name = 'Raichu';
             }
+            console.log( this.id , this.monster.pv);
             if(this.id >= 10 && this.monster.pv <= 0){
                 this.score.emit( true );
-                this.end = "THE END";
+                this.end = "~ THE END ~";
             }
             else{
                 this.monster.pv -= 0;
